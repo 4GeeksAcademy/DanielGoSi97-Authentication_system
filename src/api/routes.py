@@ -42,15 +42,21 @@ def login():
 @api.route("/signup", methods=["POST"])
 def signup():
     body = request.get_json()
+    email = body.get("email")
+    password = body.get("password")
     user = User.query.filter_by(email=body["email"]).first()
     if user:
         return jsonify({"msg": "Ya se encuentra un usuario creado con ese correo"}), 401
     
-    user = User(email=body["email"], password=body["password"], is_active=True)
+    user = User(email=email, password=password, is_active=True)
 
     db.session.add(user)
     db.session.commit()
+
+    access_token = create_access_token(identity=email)
+
     response_body = {
-        "msg": "Usuario creado"
+        "msg": "Usuario creado",
+        "access_token":access_token
     }
-    return jsonify(response_body), 200
+    return jsonify(response_body), 201

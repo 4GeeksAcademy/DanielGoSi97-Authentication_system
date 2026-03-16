@@ -60,6 +60,9 @@ const LogIn = () => {
                 <button type="submit" className="btn btn-primary w-100">
                     Ingresar
                 </button>
+                <Link to="/signup" className="ms-2">
+                  Regístrate aquí
+                </Link>
             </form>
         </div>
   )
