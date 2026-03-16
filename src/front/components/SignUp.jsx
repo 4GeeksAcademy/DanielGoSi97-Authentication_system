@@ -61,6 +61,9 @@ const SignUp = () => {
                 <button type="submit" className="btn btn-primary w-100">
                     Ingresar
                 </button>
+                <Link to="/" className="ms-2">
+                    Regresa a principal
+                </Link>
             </form>
         </div>
   )

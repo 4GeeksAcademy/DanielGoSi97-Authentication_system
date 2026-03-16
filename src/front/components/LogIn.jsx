@@ -37,8 +37,6 @@ const LogIn = () => {
   return (
 <div className="container mt-5">
             <form className="w-50 mx-auto" onSubmit={sendData}>
-                <h2 className="text-center mb-4">Login</h2>
-                
                 <div className="mb-3">
                     <label className="form-label">Email address</label>
                     <input 
