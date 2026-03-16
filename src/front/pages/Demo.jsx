@@ -1,6 +1,8 @@
 // Import necessary components from react-router-dom and other parts of the application.
 import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";  // Custom hook for accessing the global state.
+import LogIn from "../components/LogIn";
+import { Navigate } from "react-router-dom";
 
 export const Demo = () => {
   // Access the global state and dispatch function using the useGlobalReducer hook.
@@ -8,7 +10,9 @@ export const Demo = () => {
 
   return (
     <div className="container">
-      <ul className="list-group">
+      {store.auth? 
+      <>
+       <ul className="list-group">
         {/* Map over the 'todos' array from the store and render each item as a list element */}
         {store && store.todos?.map((item) => {
           return (
@@ -32,7 +36,11 @@ export const Demo = () => {
             </li>
           );
         })}
-      </ul>
+      </ul>     
+      </>
+      : <Navigate to ="/"/>}
+
+
       <br />
 
       <Link to="/">
